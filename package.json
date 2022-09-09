@@ -1,10 +1,13 @@
 {
   "name": "main-worker",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "patch": "git push && npm version patch",
+    "minor": "git push && npm version minor",
+    "major": "git push && npm version major"
   },
   "author": "Yaniv Schweitzer",
   "license": "ISC",
