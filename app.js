@@ -10,7 +10,7 @@ const ResourceNotFound = require('./utils/errors/ResourceNotFound');
 const corsOptions = require('./utils/cors');
 const { requestLogger } = require('./middlewares/logger');
 const { githubWebhookListen } = require('./lib/githubWebhook');
-const initSentry = require('./utils/sentry');
+const { initSentry } = require('./utils/sentry');
 
 initSentry();
 
