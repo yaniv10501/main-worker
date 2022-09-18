@@ -3,12 +3,11 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const helmet = require('helmet');
-const { errorLogger } = require('express-winston');
 const logger = require('./utils/logger');
 const ServerError = require('./utils/errors/ServerError');
 const ResourceNotFound = require('./utils/errors/ResourceNotFound');
 const corsOptions = require('./utils/cors');
-const { requestLogger } = require('./middlewares/logger');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { githubWebhookListen } = require('./lib/githubWebhook');
 const { initSentry } = require('./utils/sentry');
 
@@ -37,7 +36,7 @@ app.post('/hook', githubWebhookListen);
 
 app.use(errorLogger);
 
-app.use((req, res, next) => new ResourceNotFound(req, res, next));
+app.use(ResourceNotFound);
 
 app.use(ServerError);
 
